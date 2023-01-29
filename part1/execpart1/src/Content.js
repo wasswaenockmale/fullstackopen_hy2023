@@ -3,7 +3,7 @@ const Content = (props)=>{
     // console.log(props);
     return(
         <>
-        {props.parts.map(value => <Part parts = {value}/>)}
+        {props.course.parts.map(value => <Part parts = {value}/>)}
         </>
     );
 }
