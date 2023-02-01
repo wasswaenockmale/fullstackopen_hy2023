@@ -5,12 +5,26 @@ import './App.css';
 const StatisticsLine = ({text, value}) =>{
   if(text == "positive"){
     return(
-      <p>{text} {value}%</p>
-    )
+      <div>
+        <table>
+          <tr>
+            <td>{text}</td>
+            <td>{value}%</td>
+          </tr>
+        </table>
+      </div>
+    );
   }
 
   return(
-    <p>{text} {value}</p>
+    <div>
+        <table>
+          <tr>
+            <td>{text}</td>
+            <td>{value}</td>
+          </tr>
+        </table>
+    </div>
   );
 }
 // This is the statistics component 
