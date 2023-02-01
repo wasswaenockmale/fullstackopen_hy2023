@@ -2,6 +2,17 @@ import { useState } from "react";
 import Button from "./Button";
 import './App.css';
 
+const StatisticsLine = ({text, value}) =>{
+  if(text == "positive"){
+    return(
+      <p>{text} {value}%</p>
+    )
+  }
+
+  return(
+    <p>{text} {value}</p>
+  );
+}
 // This is the statistics component 
 const Statistics = (props) => {
   if(props.statistics.feedback.reduce((prev, curr) => prev + curr,0) === 0){
@@ -15,12 +26,13 @@ const Statistics = (props) => {
     return(
       <div>
           <h1>statistics</h1>
-          <p>good {props.statistics.feedback[0]}</p>
-          <p>neutral {props.statistics.feedback[1]}</p>
-          <p>bad {props.statistics.feedback[2]}</p>
-          <p>all {props.statistics.feedback.reduce((prev, curr)=>prev + curr,0)}</p>
-          <p>average {props.statistics.average}</p>
-          <p>positive {props.statistics.percent}%</p>
+          {/* <p>good {props.statistics.feedback[0]}</p> */}
+          <StatisticsLine text= "good" value={props.statistics.feedback[0]} />
+          <StatisticsLine text="neutral" value={props.statistics.feedback[1]} />
+          <StatisticsLine text="bad" value={props.statistics.feedback[2]} />
+          <StatisticsLine text="all" value={props.statistics.feedback.reduce((prev, curr)=>prev + curr,0)} />
+          <StatisticsLine text="average" value={props.statistics.average} />
+          <StatisticsLine text="positive" value={props.statistics.percent} />
       </div>
   );
   }
