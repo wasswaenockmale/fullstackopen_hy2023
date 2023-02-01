@@ -8,12 +8,7 @@ const Statistics = (props) => {
     return(
       <div>
         <h1>statistics</h1>
-        <p>good {props.statistics.feedback[0]}</p>
-        <p>neutral {props.statistics.feedback[1]}</p>
-        <p>bad {props.statistics.feedback[2]}</p>
-        <p>all {props.statistics.feedback.reduce((prev, curr)=>prev + curr,0)}</p>
-        <p>average {0}</p>
-        <p>positive {0}%</p>
+        <p>No feedback given</p>
       </div>
     )
   }else{
