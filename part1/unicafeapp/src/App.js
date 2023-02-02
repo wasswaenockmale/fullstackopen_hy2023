@@ -7,10 +7,12 @@ const StatisticsLine = ({text, value}) =>{
     return(
       <div>
         <table>
-          <tr>
-            <td>{text}</td>
-            <td>{value}%</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>{text}</td>
+              <td>{value}%</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
@@ -19,10 +21,12 @@ const StatisticsLine = ({text, value}) =>{
   return(
     <div>
         <table>
-          <tr>
-            <td>{text}</td>
-            <td>{value}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>{text}</td>
+              <td>{value}</td>
+            </tr>
+          </tbody>
         </table>
     </div>
   );
