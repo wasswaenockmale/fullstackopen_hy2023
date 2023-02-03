@@ -13,14 +13,29 @@ function App() {
     'The only way to go fast, is to go well.'
   ]
 
-  let [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(0);
+  const [voted, setVoted] = useState(Array(anecdotes.length).fill(0));
+  let points = Array(anecdotes.length).fill(0);
+
+
+  // console.log(points)
   const nextAnecdote = ()=>{
     setSelected(Math.floor(Math.random() * (anecdotes.length - 1)));
   }
 
+  const vote = ()=>{
+    const copy = [...voted];
+    copy[selected] += 1;
+    setVoted(copy);
+  }
+
+  console.log(voted)
+
   return (
     <div className="App">
       <p>{anecdotes[selected]}</p>
+      <p>has {voted[selected]} votes</p>
+      <button onClick={vote}>vote</button>
       <button onClick={nextAnecdote}>next anecdote</button>
     </div>
   );
