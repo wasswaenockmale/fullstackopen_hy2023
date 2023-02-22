@@ -10,4 +10,4 @@
         server ->> browser: the javascript file
         browser -->> server:  HTTP GET request to https://studies.cs.helsinki.fi/exampleapp/data.json
         server ->> browser: [{content: "heee",date: "2023-02-22T12:39:26.525Z"},...]
-        
+:::
