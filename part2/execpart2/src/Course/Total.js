@@ -1,7 +1,12 @@
-const Total = (props)=>{
+const Total = ({course})=>{
+    let count = 0;
+    course.parts.forEach(element => {
+        count += element.exercises;
+    });
+    // console.log(count);
     return(
         <>
-            <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
+            <h4>total of {count} exercises</h4>
         </>
     );
 }
