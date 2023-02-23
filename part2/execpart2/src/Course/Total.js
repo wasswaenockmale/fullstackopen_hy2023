@@ -1,12 +1,10 @@
-const Total = ({course})=>{
-    let count = 0;
-    course.parts.forEach(element => {
-        count += element.exercises;
-    });
-    // console.log(count);
+const Total = ({course:{_,parts}})=>{
+    // const total = parts.reduce((prev, current)=>{
+    //     return prev + current.exercises;
+    // },0);
     return(
         <>
-            <h4>total of {count} exercises</h4>
+            <h4>total of {parts.reduce((acc, current)=>{return acc + current.exercises},0)} exercises</h4>
         </>
     );
 }
