@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Person from "./Components/Person";
+import PersonForm from "./Components/PersonForm";
+import Filter from "./Components/Filter";
 
 const App = ()=> {
   const [persons, setPersons] = useState([
@@ -24,6 +27,7 @@ const App = ()=> {
       const newPerson = {
         name: newName,
         number: newTel,
+        id: persons.length + 1
       }
       const person = [...persons].concat([newPerson]);
       setPersons(person);
@@ -46,31 +50,14 @@ const App = ()=> {
     setCharSearch(event.target.value);
   }
 
-  const searchedPerson = persons.filter(element => element.name.includes(charSearch));
   return (
     <div>
       <h2>PhoneBook</h2>
-      <div>
-        filter shown with <input onChange={handleSearch}/>
-      </div>
+      <Filter charSearch={charSearch} persons={persons} handleSearch={handleSearch} />
       <h2>add a new</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          name: <input onChange={handleNameChange}/>
-        </div>
-        <div>
-          number: <input onChange={handleNumberChange}/>
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <PersonForm handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} handleSubmit={handleSubmit}/>
       <h2>Numbers</h2>
-      <div>
-        {
-          searchedPerson.map(person => <p key={person.name}>{person.name} {person.number}</p>)
-        }
-      </div>
+      <Person persons={persons}/>
     </div>
   );
 }
