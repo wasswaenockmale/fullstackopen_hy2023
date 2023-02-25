@@ -5,12 +5,18 @@ const App = ()=> {
   const [newName, setNewName] = useState('');
 
   const handleSubmit = (event)=>{
-    event.preventDefault();
-    const newPerson = {
-      name: newName,
+    // First prevent default
+    // second check whether the name already exists in the phonebook.
+    if(persons.filter(element => element.name === newName).length != 0){
+      window.alert(`${newName} is already in the phonebook`);
+    }else{
+      const newPerson = {
+        name: newName,
+      }
+      const person = [...persons].concat([newPerson]);
+      setPersons(person);
     }
-    const person = [...persons].concat([newPerson]);
-    setPersons(person);
+    event.preventDefault();
   }
 
   const handlChange = (event)=>{
