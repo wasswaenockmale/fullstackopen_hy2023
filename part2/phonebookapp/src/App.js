@@ -17,9 +17,11 @@ const App = ()=> {
       setPersons(response.data);
     });
   },[]);
+
   const handleSubmit = (event)=>{
     // First prevent default
     // second check whether the name already exists in the phonebook.
+    // Then make sure that the information is saved to the server.
     if(persons.filter(element => element.name === newName).length !== 0){
       window.alert(`${newName} is already in the phonebook`);
     }else{
@@ -28,8 +30,13 @@ const App = ()=> {
         number: newTel,
         id: persons.length + 1
       }
-      const person = [...persons].concat([newPerson]);
-      setPersons(person);
+      // const person = [...persons].concat([newPerson]);
+      // setPersons(person);
+      axios.post("http://localhost:3001/persons",newPerson)
+      .then(response => {
+        console.log(response.data);
+        setPersons([...persons].concat(response.data));
+      });
     }
     event.preventDefault();
   }
