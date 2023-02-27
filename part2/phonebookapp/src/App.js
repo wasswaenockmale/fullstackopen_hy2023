@@ -19,8 +19,19 @@ const App = ()=> {
     });
   },[]);
 
+  const handleDelete = event => {
+    if(window.confirm("Do really want to delete this number")){
+      const id = event.target.id;
+      savePerson.deleteNumber(id)
+      .then(response => {
+        const newPersons = [...persons].filter(person => person.id !== id)
+        
+      })
+    }
+  }
+
   const handleSubmit = (event)=>{
-    // First prevent default
+    // First prevent default 
     // second check whether the name already exists in the phonebook.
     // Then make sure that the information is saved to the server.
     if(persons.filter(element => element.name === newName).length !== 0){
@@ -35,7 +46,7 @@ const App = ()=> {
       savePerson.saveNumber(newPerson)
       .then(response => {
         setPersons([...persons].concat(response));
-      })
+      });
     }
     event.preventDefault();
   }
@@ -59,11 +70,22 @@ const App = ()=> {
   return (
     <div>
       <h2>PhoneBook</h2>
-      <Filter charSearch={charSearch} persons={persons} handleSearch={handleSearch} />
+      <Filter 
+      charSearch={charSearch} 
+      persons={persons} 
+      handleSearch={handleSearch} 
+      />
       <h2>add a new</h2>
-      <PersonForm handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} handleSubmit={handleSubmit}/>
+      <PersonForm 
+      handleNameChange={handleNameChange} 
+      handleNumberChange={handleNumberChange}
+      handleSubmit={handleSubmit}
+      />
       <h2>Numbers</h2>
-      <Person persons={persons}/>
+      <Person 
+      persons={persons}
+      handleDelete={handleDelete}
+      />
     </div>
   );
 }

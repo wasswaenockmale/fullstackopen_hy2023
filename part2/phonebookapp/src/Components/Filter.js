@@ -5,7 +5,11 @@ const Filter = (props)=>{
                 filter shown with <input onChange={props.handleSearch}/>
                 {
                     props.persons.filter(element => element.name.includes(props.charSearch)).map(value =>
-                        <p key={value.id}>{value.name} {value.number}</p>)
+                        <div key={value.id}>
+                            {value.name} {value.number} 
+                            <button>delete</button>
+                        </div>
+                        )
                 }
               </div>
           )

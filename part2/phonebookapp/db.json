@@ -1,41 +1,6 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 1
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 2
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 3
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 4
-    },
-    {
-      "name": "Enock Male",
-      "number": "0758585390",
-      "id": 5
-    },
-    {
-      "name": "Sarah Kizza",
-      "number": "07585994958",
-      "id": 6
-    },
-    {
-      "name": "Wasswa Enock",
-      "number": "1128129",
-      "id": 7
-    },
-    {
       "name": "Elijah Kigongo",
       "number": "0752789634",
       "id": 8
@@ -49,11 +14,6 @@
       "name": "Claire Male",
       "number": "0758903948",
       "id": 10
-    },
-    {
-      "name": "Barcelona Male",
-      "number": "9329984894",
-      "id": 11
     }
   ]
 }
