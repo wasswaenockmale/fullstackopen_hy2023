@@ -3,6 +3,7 @@ import Person from "./Components/Person";
 import PersonForm from "./Components/PersonForm";
 import Filter from "./Components/Filter";
 import axios from "axios";
+import savePerson from "./Service/savePerson";
 
 const App = ()=> {
   const [persons, setPersons] = useState([]);
@@ -30,13 +31,11 @@ const App = ()=> {
         number: newTel,
         id: persons.length + 1
       }
-      // const person = [...persons].concat([newPerson]);
-      // setPersons(person);
-      axios.post("http://localhost:3001/persons",newPerson)
+
+      savePerson.saveNumber(newPerson)
       .then(response => {
-        console.log(response.data);
-        setPersons([...persons].concat(response.data));
-      });
+        setPersons([...persons].concat(response));
+      })
     }
     event.preventDefault();
   }
