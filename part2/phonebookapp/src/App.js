@@ -35,7 +35,17 @@ const App = ()=> {
     // second check whether the name already exists in the phonebook.
     // Then make sure that the information is saved to the server.
     if(persons.filter(element => element.name === newName).length !== 0){
-      window.alert(`${newName} is already in the phonebook`);
+      // Now if the number exists in the server
+      if(window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)){
+        // now get the id of the person, whose number you want to check.
+        const person = persons.find(element => element.name === newName);
+        const changedNumber = {...person, number: newTel};
+        
+        savePerson.updateNumber(person.id,changedNumber)
+        .then(response => {
+          setPersons(persons.map(person => person.name !== newName ? person: response));
+        })
+      }
     }else{
       const newPerson = {
         name: newName,
