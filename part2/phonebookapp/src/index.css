@@ -2,9 +2,19 @@
     color: green;
     border-radius: 5px;
     border: 2px solid green;
-    background-color: gray;
+    background-color: lightgray;
     padding: 10px;
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.error{
+    color: red;
+    border-radius: 5px;
+    border: 2px solid red;
+    background-color: lightgray;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }

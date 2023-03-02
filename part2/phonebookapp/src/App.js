@@ -5,6 +5,7 @@ import Filter from "./Components/Filter";
 import axios from "axios";
 import savePerson from "./Service/savePerson";
 import Notification from "./Components/Notification";
+import ErrorMessage from "./Components/ErrorMessage";
 
 const App = ()=> {
   const [persons, setPersons] = useState([]);
@@ -13,6 +14,7 @@ const App = ()=> {
   const [newTel, setNewTel] = useState('');
   const [charSearch, setCharSearch] = useState('');
   const [message, setMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(()=>{
     axios.get('http://localhost:3001/persons')
@@ -27,7 +29,6 @@ const App = ()=> {
       savePerson.deleteNumber(id)
       .then(response => {
         const newPersons = [...persons].filter(person => person.id !== id)
-        
       })
     }
   }
@@ -46,8 +47,11 @@ const App = ()=> {
         savePerson.updateNumber(person.id,changedNumber)
         .then(response => {
           setPersons(persons.map(person => person.name !== newName ? person: response));
+          setMessage(`${person.name}'s has been changed`);
         })
-        setMessage(`${person.name}'s has been changed`);
+        .catch(error => {
+          setErrorMessage(`Information of ${newName} has already been deleted.`);
+        });
       }
     }else{
       const newPerson = {
@@ -59,8 +63,11 @@ const App = ()=> {
       savePerson.saveNumber(newPerson)
       .then(response => {
         setPersons([...persons].concat(response));
-      });
-      setMessage(`Added ${newPerson.name}`);
+        setMessage(`Added ${newPerson.name}`);
+      }).catch(error => {
+        console.log(error)
+        console.log("The error is here")
+      })
     }
     event.preventDefault();
   }
@@ -85,7 +92,8 @@ const App = ()=> {
     <div>
       <h2>PhoneBook</h2>
       <Notification message={message} />
-      <Filter 
+      <ErrorMessage message={errorMessage} />
+      <Filter
       charSearch={charSearch} 
       persons={persons} 
       handleSearch={handleSearch} 
