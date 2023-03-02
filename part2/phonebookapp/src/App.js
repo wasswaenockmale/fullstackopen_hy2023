@@ -4,6 +4,7 @@ import PersonForm from "./Components/PersonForm";
 import Filter from "./Components/Filter";
 import axios from "axios";
 import savePerson from "./Service/savePerson";
+import Notification from "./Components/Notification";
 
 const App = ()=> {
   const [persons, setPersons] = useState([]);
@@ -11,6 +12,7 @@ const App = ()=> {
   const [newName, setNewName] = useState('');
   const [newTel, setNewTel] = useState('');
   const [charSearch, setCharSearch] = useState('');
+  const [message, setMessage] = useState(null);
 
   useEffect(()=>{
     axios.get('http://localhost:3001/persons')
@@ -45,6 +47,7 @@ const App = ()=> {
         .then(response => {
           setPersons(persons.map(person => person.name !== newName ? person: response));
         })
+        setMessage(`${person.name}'s has been changed`);
       }
     }else{
       const newPerson = {
@@ -57,6 +60,7 @@ const App = ()=> {
       .then(response => {
         setPersons([...persons].concat(response));
       });
+      setMessage(`Added ${newPerson.name}`);
     }
     event.preventDefault();
   }
@@ -80,6 +84,7 @@ const App = ()=> {
   return (
     <div>
       <h2>PhoneBook</h2>
+      <Notification message={message} />
       <Filter 
       charSearch={charSearch} 
       persons={persons} 
