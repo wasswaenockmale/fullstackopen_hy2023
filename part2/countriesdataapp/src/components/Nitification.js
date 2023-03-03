@@ -1,4 +1,7 @@
-const Notification = ({countries, value}) =>{
+import ShowBtn from "./Show";
+
+const Notification = ({countries, value, isShow, handleClick, id}) =>{
+
     if(countries.length <= 10){
         if(countries.length === 1){
             return (
@@ -20,9 +23,18 @@ const Notification = ({countries, value}) =>{
         }else{
             return (
                 <div>
-                    {countries.map(country => <div key={country.name}>
-                        {country.name}
-                    </div>)}
+                    {countries.map(country => {
+                        return(
+                            <div key={country.name}>
+                                {country.name}
+                                <button onClick={handleClick} id={country.name}>
+                                    {!isShow ? "show" : "hide"}
+                                </button>
+                            </div>
+                        )
+                    }
+                    )}
+                    <ShowBtn countries={countries} isShow={isShow} id={id}/> 
                 </div>
             )
         }
