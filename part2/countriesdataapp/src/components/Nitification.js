@@ -1,6 +1,7 @@
+import ButtonShow from "./Button";
 import ShowBtn from "./Show";
 
-const Notification = ({countries, value, isShow, handleClick, id}) =>{
+const Notification = ({countries, value,}) =>{
 
     if(countries.length <= 10){
         if(countries.length === 1){
@@ -27,14 +28,12 @@ const Notification = ({countries, value, isShow, handleClick, id}) =>{
                         return(
                             <div key={country.name}>
                                 {country.name}
-                                <button onClick={handleClick} id={country.name}>
-                                    {!isShow ? "show" : "hide"}
-                                </button>
+                               <ButtonShow countries={countries} id={country.name}/>
                             </div>
                         )
                     }
                     )}
-                    <ShowBtn countries={countries} isShow={isShow} id={id}/> 
+                    {/* <ShowBtn countries={countries} isShow={isShow} id={id}/>  */}
                 </div>
             )
         }

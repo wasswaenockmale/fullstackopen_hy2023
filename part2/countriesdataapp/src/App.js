@@ -12,14 +12,6 @@ const App = ()=> {
     setValue(event.target.value);
   }
 
-  const [isShow, setIsShow] = useState(false);
-  const [id, setId] = useState('')
-  const handleClick = (event)=>{
-      const id = event.target.id
-      setIsShow(!isShow);
-      setId(id);
-  }
-
   useEffect(()=>{
     // Whenever the value changes, show more countries.
     axios.get(`https://restcountries.com/v2/all`)
@@ -39,9 +31,6 @@ const App = ()=> {
 
       <Notification 
       countries={countries} 
-      handleClick={handleClick} 
-      isShow={isShow}
-      id={id}
       />
     </div>
   );

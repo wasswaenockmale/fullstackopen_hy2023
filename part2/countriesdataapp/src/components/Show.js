@@ -2,7 +2,7 @@ const ShowBtn = ({countries, isShow, id})=>{
     const country = countries.find(element => element.name === id);
     if(isShow){
         return (
-            <div>
+            <>
                 <h1>{country.name}</h1>
                 <div>{country.capital}</div>
                 <div>{country.area}</div>
@@ -13,7 +13,7 @@ const ShowBtn = ({countries, isShow, id})=>{
                     )}
                 </ul>
                 <img src={country.flag} alt="Country flag"/>
-            </div>
+            </>
         )
     }
     return null
