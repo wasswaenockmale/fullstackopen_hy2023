@@ -5,7 +5,7 @@ const ButtonShow = ({countries, id})=>{
     const [isShow, setIsShow] = useState(false)
     // const [id, setId] = useState('');
 
-    const handleClick = (event)=>{
+    const handleClick = ()=>{
         // const id = event.target.id
         setIsShow(!isShow);
         // setId(id);
@@ -13,10 +13,10 @@ const ButtonShow = ({countries, id})=>{
 
     return(
         <div>
-        <button onClick={handleClick}>
-            {!isShow ? "show": "hide"}
-        </button>
-        <ShowBtn countries={countries} isShow={isShow} id={id}/>
+            <button onClick={handleClick}>
+                {!isShow ? "show": "hide"}
+            </button>
+            <ShowBtn countries={countries} isShow={isShow} id={id}/>
         </div>
     )
 }

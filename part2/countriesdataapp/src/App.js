@@ -23,8 +23,7 @@ const App = ()=> {
       console.log("This is an error here",error);
     });
   }, [value]);
-
-  // console.log(countries)
+  
   return (
     <div className="App">
       find countries<input onChange={handleChange}/>

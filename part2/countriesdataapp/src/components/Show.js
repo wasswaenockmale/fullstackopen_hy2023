@@ -1,3 +1,5 @@
+import Weather from "./WeatherDisplay";
+
 const ShowBtn = ({countries, isShow, id})=>{
     const country = countries.find(element => element.name === id);
     if(isShow){
@@ -13,6 +15,8 @@ const ShowBtn = ({countries, isShow, id})=>{
                     )}
                 </ul>
                 <img src={country.flag} alt="Country flag"/>
+
+                <Weather country={country}/>
             </>
         )
     }
