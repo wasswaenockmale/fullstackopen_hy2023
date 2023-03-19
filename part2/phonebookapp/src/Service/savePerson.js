@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Now create the base url
-const baseUrl = "api/persons";
+const baseUrl = "/api/persons";
 
 const saveNumber = newNumber =>{
     const request = axios.post(baseUrl, newNumber);
